@@ -328,7 +328,19 @@
                 <!-- Navigation -->
                 <div class="wizard-navigation">
                     <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;">← Previous</button>
-                    <button class="btn btn-primary" id="nextBtn">Next →</button>
+                    <div class="nav-right">
+                        <div class="trust-message">
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="opacity: 0.5;">
+                                <path d="M5.6 10.2L2.1 6.7L3.5 5.3L5.6 7.4L10.5 2.5L11.9 3.9L5.6 10.2Z" fill="currentColor"/>
+                            </svg>
+                            <span>No login required</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="opacity: 0.5; margin-left: 12px;">
+                                <path d="M5.6 10.2L2.1 6.7L3.5 5.3L5.6 7.4L10.5 2.5L11.9 3.9L5.6 10.2Z" fill="currentColor"/>
+                            </svg>
+                            <span>No ambiguity</span>
+                        </div>
+                        <button class="btn btn-primary" id="nextBtn">Next →</button>
+                    </div>
                     <button class="btn btn-success hidden" id="generateBtn">✨ Generate my AI prompt</button>
                 </div>
             </div>
@@ -366,6 +378,7 @@
     <footer class="footer">
         <div class="container">
             <p>Built with precision • No login required • No ambiguity</p>
+            <p style="margin-top: 8px; font-size: 12px; opacity: 0.7;">✨ Created with ❤️ by Engr Bayo Shoba</p>
         </div>
     </footer>
 
