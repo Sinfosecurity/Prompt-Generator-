@@ -114,8 +114,20 @@ body > * {
     background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
 }
 
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.visitor-counter {
+    flex-shrink: 0;
+}
+
 .branding {
     text-align: center;
+    flex: 1;
 }
 
 .logo {
