@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PromptFoundry - AI Prompt Architect</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="branding">
+                <h1 class="logo">PromptFoundry</h1>
+                <p class="tagline">Turn ideas into AI-ready prompts</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+                <div class="progress-steps">
+                    <div class="step active" data-step="1">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">App Type</div>
+                    </div>
+                    <div class="step" data-step="2">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Target Users</div>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Problem</div>
+                    </div>
+                    <div class="step" data-step="4">
+                        <div class="step-circle">4</div>
+                        <div class="step-label">Inputs</div>
+                    </div>
+                    <div class="step" data-step="5">
+                        <div class="step-circle">5</div>
+                        <div class="step-label">Outputs</div>
+                    </div>
+                    <div class="step" data-step="6">
+                        <div class="step-circle">6</div>
+                        <div class="step-label">Design</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wizard Container -->
+            <div class="wizard-container">
+                <!-- Step 1: App Type -->
+                <div class="wizard-step active" data-step="1">
+                    <div class="step-content">
+                        <h2 class="step-title">What type of web app do you want to generate a prompt for?</h2>
+                        <div class="options-grid">
+                            <button class="option-card" data-value="invoice-generator">
+                                <span class="option-icon">📄</span>
+                                <span class="option-text">Invoice generator</span>
+                            </button>
+                            <button class="option-card" data-value="calculator">
+                                <span class="option-icon">🧮</span>
+                                <span class="option-text">Calculator / estimator</span>
+                            </button>
+                            <button class="option-card" data-value="prompt-generator">
+                                <span class="option-icon">✨</span>
+                                <span class="option-text">Prompt generator</span>
+                            </button>
+                            <button class="option-card" data-value="analyzer">
+                                <span class="option-icon">🔍</span>
+                                <span class="option-text">Analyzer or checker</span>
+                            </button>
+                            <button class="option-card" data-value="planner">
+                                <span class="option-icon">📅</span>
+                                <span class="option-text">Planner or productivity tool</span>
+                            </button>
+                            <button class="option-card" data-value="writer">
+                                <span class="option-icon">✍️</span>
+                                <span class="option-text">Writer or content generator</span>
+                            </button>
+                            <button class="option-card" data-value="validator">
+                                <span class="option-icon">✅</span>
+                                <span class="option-text">Validator or reviewer</span>
+                            </button>
+                            <button class="option-card" data-value="custom">
+                                <span class="option-icon">💡</span>
+                                <span class="option-text">Something else</span>
+                            </button>
+                        </div>
+                        <div class="custom-input-container hidden" id="customAppType">
+                            <input type="text" class="text-input" placeholder="Describe your app type..." id="customAppTypeInput">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Target Users -->
+                <div class="wizard-step" data-step="2">
+                    <div class="step-content">
+                        <h2 class="step-title">Who will primarily use this app?</h2>
+                        <div class="options-grid">
+                            <button class="option-card" data-value="beginners">
+                                <span class="option-icon">👋</span>
+                                <span class="option-text">Beginners / non-technical users</span>
+                            </button>
+                            <button class="option-card" data-value="students">
+                                <span class="option-icon">🎓</span>
+                                <span class="option-text">Students or learners</span>
+                            </button>
+                            <button class="option-card" data-value="freelancers">
+                                <span class="option-icon">💼</span>
+                                <span class="option-text">Freelancers or solopreneurs</span>
+                            </button>
+                            <button class="option-card" data-value="small-business">
+                                <span class="option-icon">🏪</span>
+                                <span class="option-text">Small business owners</span>
+                            </button>
+                            <button class="option-card" data-value="corporate">
+                                <span class="option-icon">🏢</span>
+                                <span class="option-text">Corporate professionals</span>
+                            </button>
+                            <button class="option-card" data-value="niche">
+                                <span class="option-icon">🎯</span>
+                                <span class="option-text">A very specific niche</span>
+                            </button>
+                        </div>
+                        <div class="custom-input-container hidden" id="customTargetUsers">
+                            <input type="text" class="text-input" placeholder="Describe your specific niche..." id="customTargetUsersInput">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Problem Statement -->
+                <div class="wizard-step" data-step="3">
+                    <div class="step-content">
+                        <h2 class="step-title">What is the main problem this app helps users solve?</h2>
+                        <p class="step-helper">Describe the pain clearly. One or two sentences is enough.</p>
+                        <textarea 
+                            class="textarea-input" 
+                            id="problemStatement" 
+                            rows="4" 
+                            placeholder="Example: Users struggle to create professional invoices quickly without design skills or complex software..."></textarea>
+                        <div class="validation-hint hidden" id="problemHint">
+                            💡 Try to be more specific. What pain point does this solve?
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: User Inputs -->
+                <div class="wizard-step" data-step="4">
+                    <div class="step-content">
+                        <h2 class="step-title">What does the user need to input to get results?</h2>
+                        <p class="step-helper">Select all that apply</p>
+                        <div class="options-grid multi-select">
+                            <button class="option-card" data-value="text">
+                                <span class="option-icon">📝</span>
+                                <span class="option-text">Text or descriptions</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="numbers">
+                                <span class="option-icon">🔢</span>
+                                <span class="option-text">Numbers or values</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="urls">
+                                <span class="option-icon">🔗</span>
+                                <span class="option-text">URLs or links</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="files">
+                                <span class="option-icon">📎</span>
+                                <span class="option-text">Uploaded files (PDF, doc, etc.)</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="images">
+                                <span class="option-icon">🖼️</span>
+                                <span class="option-text">Images</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="form-fields">
+                                <span class="option-icon">📋</span>
+                                <span class="option-text">Multiple form fields</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="custom-input">
+                                <span class="option-icon">⚙️</span>
+                                <span class="option-text">Something else</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                        </div>
+                        <div class="custom-input-container hidden" id="customInputType">
+                            <input type="text" class="text-input" placeholder="Describe the input type..." id="customInputTypeInput">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5: Expected Outputs -->
+                <div class="wizard-step" data-step="5">
+                    <div class="step-content">
+                        <h2 class="step-title">What should the app show after the user clicks the main button?</h2>
+                        <p class="step-helper">Select all that apply</p>
+                        <div class="options-grid multi-select">
+                            <button class="option-card" data-value="generated-text">
+                                <span class="option-icon">📄</span>
+                                <span class="option-text">Generated text (emails, prompts, content)</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="scores">
+                                <span class="option-icon">⭐</span>
+                                <span class="option-text">Scores, ratings, or verdicts</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="explanations">
+                                <span class="option-icon">💡</span>
+                                <span class="option-text">Written explanations or insights</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="charts">
+                                <span class="option-icon">📊</span>
+                                <span class="option-text">Charts or visual breakdowns</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="action-steps">
+                                <span class="option-icon">🎯</span>
+                                <span class="option-text">Action steps or recommendations</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="summary">
+                                <span class="option-icon">📋</span>
+                                <span class="option-text">A summary or report-style result</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="variations">
+                                <span class="option-icon">🔄</span>
+                                <span class="option-text">Multiple versions or variations</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                            <button class="option-card" data-value="next-steps">
+                                <span class="option-icon">➡️</span>
+                                <span class="option-text">Clear "what to do next" guidance</span>
+                                <span class="checkmark hidden">✓</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6: Design & UX -->
+                <div class="wizard-step" data-step="6">
+                    <div class="step-content">
+                        <h2 class="step-title">How should the app look and feel?</h2>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Preferred color scheme</label>
+                            <input type="text" class="text-input" id="colorScheme" placeholder="e.g., Blue and white, Dark mode, Pastel colors...">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Visual style</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="visualStyle" value="minimal">
+                                    <span>Minimal</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="visualStyle" value="clean">
+                                    <span>Clean</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="visualStyle" value="modern">
+                                    <span>Modern</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="visualStyle" value="playful">
+                                    <span>Playful</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="visualStyle" value="professional">
+                                    <span>Professional</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tone</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="tone" value="professional">
+                                    <span>Professional</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tone" value="friendly">
+                                    <span>Friendly</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tone" value="neutral">
+                                    <span>Neutral</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="tone" value="conversational">
+                                    <span>Conversational</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Platform focus</label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="platform" value="desktop">
+                                    <span>Desktop</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="platform" value="mobile">
+                                    <span>Mobile</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="platform" value="both">
+                                    <span>Both</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="wizard-navigation">
+                    <button class="btn btn-secondary" id="prevBtn" style="visibility: hidden;">← Previous</button>
+                    <button class="btn btn-primary" id="nextBtn">Next →</button>
+                    <button class="btn btn-success hidden" id="generateBtn">✨ Generate my AI prompt</button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-container hidden" id="resultsContainer">
+                <div class="results-header">
+                    <h2 class="results-title">Your AI-Ready Prompt</h2>
+                    <p class="results-subtitle">Copy and paste this into Cursor, Antigravity, v0, or your preferred AI builder</p>
+                </div>
+
+                <div class="builder-selector">
+                    <button class="builder-btn active" data-builder="universal">Universal</button>
+                    <button class="builder-btn" data-builder="cursor">Cursor</button>
+                    <button class="builder-btn" data-builder="antigravity">Antigravity</button>
+                    <button class="builder-btn" data-builder="v0">v0</button>
+                </div>
+
+                <div class="prompt-output">
+                    <pre id="promptOutput"></pre>
+                </div>
+
+                <div class="copy-actions">
+                    <button class="btn btn-primary" id="copyPlainBtn">📋 Copy as plain text</button>
+                    <button class="btn btn-secondary" id="copyMarkdownBtn">📝 Copy as Markdown</button>
+                    <button class="btn btn-secondary" id="startOverBtn">↺ Start over</button>
+                </div>
+
+                <div class="copy-feedback hidden" id="copyFeedback">✓ Copied to clipboard!</div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Built with precision • No login required • No ambiguity</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
